@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/rany/Projects/Presently/presently-app/presently-server/venv"
+VIRTUAL_ENV="/home/rany/Projects/Presently/presently-app/Present-ly/Present-ly-App/presently-server/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

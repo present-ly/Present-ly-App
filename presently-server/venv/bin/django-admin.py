@@ -1,4 +1,4 @@
-#!/home/rany/Projects/Presently/presently-app/presently-server/venv/bin/python3
+#!/home/rany/Projects/Presently/presently-app/Present-ly/Present-ly-App/presently-server/venv/bin/python3
 from django.core import management
 
 if __name__ == "__main__":

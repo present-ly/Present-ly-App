@@ -35,13 +35,10 @@ class PreferenceScreen extends Component {
 				</InstructionsText>
 				<UserSwipeCards/>
 				<ButtonContainer>
-					<Button onPress={() =>{this.props.openModal(true)}} text={"Done"}/>
+					<Button onPress={() =>{this.props.openModal(true, 'preferences')}} text={"Done"}/>
 				</ButtonContainer>
 
-			<PopUpModal isModalVisible={this.props.curState.ModalStatus.isModalVisible}/>
-
-			{/*<PopUpModal isModalVisible={true}/>*/}
-
+			<PopUpModal isModalVisible={this.props.curState.ModalStatus.visiblePref}/>
 			</ContainerView>
 		);
 

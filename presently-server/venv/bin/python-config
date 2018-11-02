@@ -1,4 +1,4 @@
-#!/home/rany/Projects/Presently/presently-app/presently-server/venv/bin/python
+#!/home/rany/Projects/Presently/presently-app/Present-ly/Present-ly-App/presently-server/venv/bin/python
 
 import sys
 import getopt

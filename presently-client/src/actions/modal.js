@@ -3,18 +3,24 @@ import {
 	DROP_DOWN_CLOSE
 } from './types';
 
-function openModal(modalStatus) {
+function openModal(modalStatus, screen) {
 	return {
 		type: DROP_DOWN_OPEN,
-		payload: {modalStatus}
+		payload: {
+			modalStatus: modalStatus,
+			screen: screen
+		}
 	}
 }
 
-function closeModal(modalStatus) {
+function closeModal(modalStatus, screen) {
 	return {
 		type: DROP_DOWN_CLOSE,
-		payload: {modalStatus}
+		payload: {
+			modalStatus: modalStatus,
+			screen: screen
+		}
 	}
 }
 
-export {openModal, closeModal}
+export { openModal, closeModal }

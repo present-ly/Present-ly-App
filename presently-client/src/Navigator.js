@@ -27,7 +27,7 @@ const AppMainTab = TabNavigator({
   Home: {
     screen: HomeScreen,
     navigationOptions: ({ navigation }) => ({
-      drawerLabel: 'Sweet home',
+      drawerLabel: 'Home',
       drawerIcon: ({ tintColor }) => (
         <FontAwesome name="home" size={23} color={colors.WHITE} />
       ),
@@ -38,7 +38,7 @@ const AppMainTab = TabNavigator({
       headerStyle: {
         backgroundColor: colors.MAIN_GREEN,
       },
-      headerTitle: 'Sweet Home',
+      headerTitle: 'Home',
       headerTitleStyle: {
         color: colors.WHITE,
       },
@@ -48,18 +48,18 @@ const AppMainTab = TabNavigator({
   Favorites: {
     screen: FavoritesScreen,
     navigationOptions: ({ navigation }) => ({
-      drawerLabel: 'Favorites',
+      drawerLabel: 'Friends',
       drawerIcon: ({ tintColor }) => (
-        <FontAwesome name="heartbeat" size={23} color={colors.WHITE} />
+        <FontAwesome name="heartbeat" size={23} color={tintColor} />
       ),
-      tabBarLabel: 'Favorites',
+      tabBarLabel: 'Friends',
       tabBarIcon: ({ tintColor }) => (
-        <FontAwesome name="heartbeat" size={23} color={colors.WHITE} />
+        <FontAwesome name="heartbeat" size={23} color={tintColor} />
       ),
       headerStyle: {
         backgroundColor: colors.MAIN_GREEN,
       },
-      headerTitle: 'Favorites',
+      headerTitle: 'Friends',
       headerTitleStyle: {
         color: colors.WHITE,
       },
@@ -69,18 +69,18 @@ const AppMainTab = TabNavigator({
   Profile: {
     screen: ProfileScreen,
     navigationOptions: ({ navigation }) => ({
-      drawerLabel: 'Profile',
+      drawerLabel: 'Cart',
       drawerIcon: ({ tintColor }) => (
-        <FontAwesome name="user-circle" size={23} color={tintColor} />
+        <FontAwesome name="shopping-cart" size={23} color={tintColor} />
       ),
-      tabBarLabel: 'Profile',
+      tabBarLabel: 'Cart',
       tabBarIcon: ({ tintColor }) => (
-        <FontAwesome name="user-circle" size={23} color={tintColor} />
+        <FontAwesome name="shopping-cart" size={23} color={tintColor} />
       ),
       headerStyle: {
         backgroundColor: colors.MAIN_GREEN,
       },
-      headerTitle: 'Profile',
+      headerTitle: 'Cart',
       headerTitleStyle: {
         color: colors.WHITE,
       },
@@ -92,8 +92,8 @@ const AppMainTab = TabNavigator({
   tabBarOptions: {
     activeTintColor: colors.WHITE,
     inactiveTintColor: colors.PINK_50,
-    inactiveBackgroundColor: colors.PINK_100,
-    activeBackgroundColor: colors.PINK_100,
+    inactiveBackgroundColor: colors.MAIN_GREEN,
+    activeBackgroundColor: colors.MAIN_GREEN,
     showIcon: true,
     showLabel: Platform.OS === 'ios',
     indicatorStyle: {
@@ -114,7 +114,7 @@ const AppMainStack = StackNavigator({
   Settings: { screen: SettingsScreen },
 }, {
   cardStyle: {
-    backgroundColor: colors.PINK_50,
+    backgroundColor: colors.MAIN_GREEN,
   },
   mode: 'modal',
 });

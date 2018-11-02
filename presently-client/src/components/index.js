@@ -7,6 +7,10 @@ import GenderSlider from './Slider';
 import UserSwipeCards from './SwipableCards';
 import PopUpModal from './PopUpModal';
 import UserCard from './UserCard'
+import ItemCarousel from './ItemCarousel';
+import { RelationTable, FlexibleRelationTable } from './RelationTable';
+import ProductModal from './ProductModal';
+import BottomModalPicker from './BottomModalPicker'
 
 
 export {
@@ -18,5 +22,10 @@ export {
 	GenderSlider,
 	UserSwipeCards,
 	PopUpModal,
-	UserCard
+	UserCard,
+	ItemCarousel,
+	RelationTable,
+	ProductModal,
+	FlexibleRelationTable,
+	BottomModalPicker
 };

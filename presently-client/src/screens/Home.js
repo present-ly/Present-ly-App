@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
-import { InputField, UserCard } from '../components';
+import { InputField, UserCard, ItemCarousel } from '../components';
 import { ScrollView } from 'react-native';
 
-// import ParallaxCard from 'react-parallax-card';
 
 const ContainerView = styled.View`
   flex: 1;
@@ -20,8 +19,6 @@ const TitleText = styled.Text`
 	fontWeight: bold;
   color: ${props => props.theme.TAUPE};
 `;
-
-// TODO: Do react-native-material-design and add the cards
 
 class HomeScreen extends Component {
 
@@ -46,17 +43,21 @@ class HomeScreen extends Component {
 						<InputField text="Find someone" padding="5%"/>
 					</Row>
 					<Row>
-						<UserCard />
 					</Row>
 					<Row size={2}>
 						<TitleText>Hi Rany, here are some upcoming events</TitleText>
 					</Row>
+						<UserCard />
 					<Row size={2}>
 						<TitleText>Some ideas for . . .</TitleText>
 						<Col>
-							<TitleText> Test </TitleText>
+			{/* <TitleText> Test </TitleText> */}
 						</Col>
 					</Row>
+				<Row>
+			<ItemCarousel/>
+
+				</Row>
 				</Grid>
 				</ScrollView>
       </ContainerView>
