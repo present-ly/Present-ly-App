@@ -9,6 +9,7 @@ import AccountActions from './accountactions';
 import TextInputs from './inputfield';
 
 import UserInfo from './userinformation'
+import CartStatus from './shoppingcart';
 
 export default combineReducers({
 	Auth: Auth,
@@ -17,6 +18,6 @@ export default combineReducers({
 	ModalStatus: ModalStatus,
 	AccountActions: AccountActions,
 	TextInputs: TextInputs,
-	UserInfo: UserInfo
-
+	UserInfo: UserInfo,
+	CartStatus: CartStatus
 });

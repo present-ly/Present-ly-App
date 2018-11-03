@@ -51,6 +51,10 @@ class WelcomeScreen extends Component {
 		this.submitInfo = this.submitInfo.bind(this);
 	}
 
+	ComponentDidMount(){
+		console.log("this.props.curState: ", this.props.curState)
+	}
+
 	submitInfo() {
 
 		console.log("Submitting Info!")

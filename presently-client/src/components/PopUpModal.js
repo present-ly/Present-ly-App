@@ -18,13 +18,6 @@ const ButtonContainer = styled.View`
 	padding: 3%;
 `
 
-const ModalText = styled.Text`
-	fontSize: 32;
-	textAlign: center;
-	color: ${props => props.theme.WHITE};
-`;
-
-
 class PopUpModal extends Component {
 
 	constructor(props) {
@@ -34,19 +27,12 @@ class PopUpModal extends Component {
 		}
 	}
 	render() {
+		const { viewComp } = this.props
 		return(
 	<ContainerView>
 			<Modal isVisible={this.props.isModalVisible}>
 				<ModalContainer>
-					<ModalText>
-						Add your friends/family!
-					</ModalText>
-					<ButtonContainer>
-						<Button text={"Add More"}/>
-					</ButtonContainer>
-					<ButtonContainer>
-						<Button text={"Do later"}/>
-					</ButtonContainer>
+				{ this.props.viewComp }
 				</ModalContainer>
 			</Modal>
 	</ContainerView>

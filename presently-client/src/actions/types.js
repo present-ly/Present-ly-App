@@ -23,4 +23,4 @@ export const NAME_CHANGE = 'name_change';
 export const USERINFO_CHANGE = 'user_info_change';
 export const REQUEST_TOKEN = 'request_token';
 export const UPDATE_TOKEN = 'update_token';
-
+export const UPDATE_CART = 'update_cart';

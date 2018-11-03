@@ -10,6 +10,7 @@ import store from './store';
 
 import Navigator from './Navigator';
 import { colors } from './utils/constants';
+import QuickPicker from 'quick-picker';
 
 const Root = styled.View`
 flex: 1;
@@ -30,6 +31,7 @@ class RootContainer extends Component {
             <StatusBar barStyle='light-content' backgroundColor='transparent' translucent />
             { Platform.OS === 'android' && Platform.Version >= 20 ? <StatusBarAndroid /> : null }
             <Navigator />
+						<QuickPicker />
           </Root>
         </FormattedWrapper>
       </ThemeProvider>

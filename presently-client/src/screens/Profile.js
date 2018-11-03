@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
-import { RelationTable, FlexibleRelationTable, BottomModalPicker} from '../components';
+import { RelationTable, FlexibleRelationTable, BottomModalPicker,
+		} from '../components';
 import { ScrollView } from 'react-native'
+import { openModal,
+					closeModal } from '../actions'
+import { connect } from 'react-redux';
+
 
 const ContainerView = styled.View`
   flex: 1;
@@ -13,48 +18,36 @@ const TitleText = styled.Text`
   color: ${props => props.theme.WHITE};
 `;
 
-const cells = [
-			{
-				key: 0,
-				header: 'header1',
-				info: [
-					{
-						key: 0,
-						title: 'title',
-						detail: 'detail'
-					},
-					{
-						key: 1,
-						title: 'title2',
-						detail: 'detail2'
-					}
-				]
-			},
-			{
-			key: 1,
-			header: 'header2',
-			info: [
-				{
-					key: 0,
-					title: 'title2',
-					detail: 'detail2'
-				}
-				]
-			}
-		]
-
 
 class ProfileScreen extends Component {
+
+	_getHeaders(cells) {
+
+			console.log("cells: ", cells);
+			return cells.map((cell) => cell.header)
+		}
+
+	ComponentDidMount(){
+		console.log("Profile Screen Mounts!");
+	}
+
   render() {
+		const { cells } = this.props;
     return (
 			<ContainerView>
 				<ScrollView>
-					<FlexibleRelationTable cells={cells}/>
-				<BottomModalPicker/>
+					<FlexibleRelationTable cells={this.props.curState.CartStatus.cart}/>
+					<BottomModalPicker options={this._getHeaders(this.props.curState.CartStatus.cart)}/>
 				</ScrollView>
 			</ContainerView>
     );
   }
 }
 
-export default ProfileScreen;
+const mapStateToProps = (state) => ({
+	curState: state
+});
+
+export default connect(
+	mapStateToProps, {}
+)(ProfileScreen);

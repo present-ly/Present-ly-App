@@ -3,6 +3,8 @@ import styled from 'styled-components/native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { InputField, UserCard, ItemCarousel } from '../components';
 import { ScrollView } from 'react-native';
+import { connect } from 'react-redux';
+import { updateCart, changeEmailLogin } from '../actions';
 
 
 const ContainerView = styled.View`
@@ -31,6 +33,8 @@ class HomeScreen extends Component {
 	}
 
 	componentDidMount(){
+		console.log("this.props.updateCart: ", this.props.updateCart)
+		console.log("this.props.changeEmailLogin: ", this.props.changeEmailLogin)
 		console.log("finished mounting!")
 	}
 
@@ -55,7 +59,7 @@ class HomeScreen extends Component {
 						</Col>
 					</Row>
 				<Row>
-			<ItemCarousel/>
+				<ItemCarousel />
 
 				</Row>
 				</Grid>
@@ -65,4 +69,8 @@ class HomeScreen extends Component {
   }
 }
 
-export default HomeScreen;
+const mapStateToProps = (state) =>({
+	curState: state
+})
+
+export default connect(mapStateToProps, { updateCart, changeEmailLogin })(HomeScreen);

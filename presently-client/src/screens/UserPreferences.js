@@ -13,6 +13,10 @@ const ContainerView = styled.View`
 	flex: 1;
 `;
 
+const SubContainerView = styled.View`
+	flex: 1
+`
+
 const ButtonContainer = styled.View`
 	padding: 3%;
 `;
@@ -25,6 +29,26 @@ const InstructionsText = styled.Text`
 	top: 10%;
 `;
 
+const ModalText = styled.Text`
+	fontSize: 32;
+	textAlign: center;
+	color: ${props => props.theme.WHITE};
+`;
+
+const ModalInfo = (
+				<SubContainerView>
+					<ModalText>
+					'Add your friends/family!'
+					</ModalText>
+					<ButtonContainer>
+						<Button text={"Add More"}/>
+					</ButtonContainer>
+					<ButtonContainer>
+						<Button text={"Do later"}/>
+					</ButtonContainer>
+				</SubContainerView>
+);
+
 class PreferenceScreen extends Component {
 	render() {
 
@@ -35,10 +59,18 @@ class PreferenceScreen extends Component {
 				</InstructionsText>
 				<UserSwipeCards/>
 				<ButtonContainer>
-					<Button onPress={() =>{this.props.openModal(true, 'preferences')}} text={"Done"}/>
+					<Button
+					onPress={() =>{
+						this.props.openModal(
+							true,
+							'preferences')}}
+							text={"Done"}/>
 				</ButtonContainer>
-
-			<PopUpModal isModalVisible={this.props.curState.ModalStatus.visiblePref}/>
+			<PopUpModal
+			viewComp={ModalInfo}
+			isModalVisible={
+				this.props.curState.ModalStatus.visiblePref
+			}/>
 			</ContainerView>
 		);
 
