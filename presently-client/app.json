@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "react-native-boilerplate",
-    "description": "A React Native boilerplate with Expo, Redux, React Navigation and some 💕 included.",
-    "slug": "react-native-boilerplate",
+    "name": "Present-ly",
+    "description": "Smartest way to get a gift",
+    "slug": "presently-app",
     "privacy": "public",
     "sdkVersion": "25.0.0",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
     "icon": "./assets/icons/app.png",
@@ -17,7 +17,11 @@
       "assetExts": ["ttf", "mp4"]
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.testapp.Presently"
+    },
+    "android": {
+	    "package": "com.testapp.Presently"
     }
   }
 }
