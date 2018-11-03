@@ -11,6 +11,7 @@
     "axios": "^0.18.0",
     "babel-preset-es2015": "^6.24.1",
     "expo": "25.0.0",
+    "quick-picker": "^1.0.0",
     "react": "16.2.0",
     "react-devtools": "^3.4.0",
     "react-native": "github:expo/react-native#sdk-25.0.0",
