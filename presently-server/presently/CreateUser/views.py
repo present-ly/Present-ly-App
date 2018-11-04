@@ -272,7 +272,7 @@ def get_recommendations(request, user_id):
 
     serializer = serializers.LastRecommendationSerializer(recommendations)
 
-    return Response(serializer.data, status.status.HTTP_200_OK)
+    return Response(serializer.data, status.HTTP_200_OK)
 
 
 @api_view(['GET'])
@@ -287,7 +287,7 @@ def get_carts(request, user_id):
 
     serializer = serializers.ShoppingCartSerializer(cart, many=True)
 
-    return Response(serializer.data, status.status.HTTP_200_OK)
+    return Response(serializer.data, status.HTTP_200_OK)
 
 
 @api_view(['GET'])
@@ -302,14 +302,14 @@ def get_user_relationships(request, user_id):
 
     serializer = serializers.UserRelationshipSerializer(user_relationships, many=True)
 
-    return Response(serializer.data, status.status.HTTP_200_OK)
+    return Response(serializer.data, status.HTTP_200_OK)
 
 
 @api_view(['GET'])
 def get_all_available_preferences(requests):
     total_prefs = models.SinglePreference.objects.all()
     serializer = serializers.SinglePreferenceSerializer(total_prefs, many=True)
-    return Response(serializer.data, status.status.HTTP_200_OK)
+    return Response(serializer.data, status.HTTP_200_OK)
 
 
 @api_view(['GET'])
@@ -324,5 +324,5 @@ def get_user_preferences(requests, user_id):
 
     serializer = serializers.TotalPreferencesSerializer(use_pref, many=True)
 
-    return Response(serializer.data, status.status.HTTP_200_OK)
+    return Response(serializer.data, status.HTTP_200_OK)
 
