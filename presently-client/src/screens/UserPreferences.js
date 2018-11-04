@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
-import { UserSwipeCards, Button, PopUpModal } from '../components';
+import {
+				UserSwipeCards, Button,
+				PopUpModal
+				} from '../components';
 
-import { openModal, closeModal } from '../actions'
+import { 
+				 openModal, closeModal,
+				 changePref, getAvailPref,
+				 postPref
+				} from '../actions'
 
 
 const ContainerView = styled.View`
@@ -50,14 +57,44 @@ const ModalInfo = (
 );
 
 class PreferenceScreen extends Component {
+
+	constructor(props){
+		super(props);
+
+		this.state = {
+			data: null
+		}
+
+	}
+
+	componentWillMount(){
+		this.props.getAvailPref()
+	}
+
+	componentDidMount(){
+		/*console.log("preferences: ", this.props.curState.PreferenceStatus.preferences)*/
+	}
+
+	
+
 	render() {
+
+		const pref = this.props.curState.PreferenceStatus.preferences
+
+		const user = this.props.curState.AccountActions.email
+
+		console.log("pref_screen: ", pref)
 
 		return(
 			<ContainerView>
 				<InstructionsText>
 					Swipe left for Dislike, right for like!
 				</InstructionsText>
-				<UserSwipeCards/>
+				<UserSwipeCards
+					cards={ pref }
+					user={ user }
+					yupAction={ this.props.postPref }
+				/>
 				<ButtonContainer>
 					<Button
 					onPress={() =>{
@@ -67,7 +104,7 @@ class PreferenceScreen extends Component {
 							text={"Done"}/>
 				</ButtonContainer>
 			<PopUpModal
-			viewComp={ModalInfo}
+			viewComp={ ModalInfo }
 			isModalVisible={
 				this.props.curState.ModalStatus.visiblePref
 			}/>
@@ -82,5 +119,5 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, {
-	openModal, closeModal
+	openModal, closeModal, getAvailPref, postPref
 })(PreferenceScreen)

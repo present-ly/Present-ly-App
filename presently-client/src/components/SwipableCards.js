@@ -29,7 +29,7 @@ class Card extends Component {
 		return (
 			<CardView>
 				<CardText>
-				{this.props.text}
+				{this.props.name}
 				</CardText>
 			</CardView>
 		)
@@ -55,16 +55,19 @@ export default class extends Component {
 
 		this.state = {
 			cards: [
-				{text: 'Sports'},
-				{text: 'Food'},
-				{text: 'Cooking'}
+				{name: 'Sports'},
+				{name: 'Food'},
+				{name: 'Cooking'},
+				{name: 'Waiting for more cards'}
 			]
-
 		}
 	}
 
 	handleYup(card) {
 		console.log('Yup')
+		this.props.yupAction(card.name,
+												 card.description,
+												 this.props.user)
 	}
 
 	handleNope(card){
@@ -76,15 +79,18 @@ export default class extends Component {
 	}
 
 	render() {
+		const { cards, yupAction, user} = this.props;
+		console.log("cards: ", cards)
+		console.log("typeof cards: ", typeof cards)
 		return(
 			<SwipeCards
-				cards={this.state.cards}
+				cards={ this.props.cards }
 				renderCard={(cardData) => <Card {...cardData} />}
 				renderNoMoreCards={() => <NoMoreCards />}
 				showYup={true}
 				showNope={true}
 				showMaybe={true}
-				handleYup={this.handleYup}
+				handleYup={this.props.yupAction}
 				handleNope={this.handleNope}
 				handleMaybe={this.handleMaybe}
 				hasMaybeAction

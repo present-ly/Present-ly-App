@@ -1,11 +1,13 @@
 import {
 	REGISTER,
 	TOKEN_CHANGE, FETCH_TOKEN,
+	UPDATE_UID
 } from '../actions/types'
 
 const INITIAL_STATE = {
 	email: null,
 	token: null,
+	uid: null,
 	response: 'none',
 }
 
@@ -16,8 +18,8 @@ const AccountAction = (state=INITIAL_STATE, action) => {
 		case REGISTER:
 			email = action.payload.email
 			password = action.payload.password
-
 			const results = action.payload.action(email, password)
+			state.email = email
 			return state
 
 		case TOKEN_CHANGE:
@@ -46,6 +48,12 @@ const AccountAction = (state=INITIAL_STATE, action) => {
 			// state.token = JSON.parse(token)
 
 			console.log("fetch token state!!!: ", state)
+
+			return state;
+
+		case UPDATE_UID:
+			console.log("updating uid")
+			state.uid = action.payload.uid
 
 			return state;
 

@@ -5,3 +5,4 @@ export * from './accountactions';
 export * from './inputfield';
 export * from './userinformation';
 export * from './shoppingcart';
+export * from './userpreferences';

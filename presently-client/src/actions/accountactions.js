@@ -27,7 +27,6 @@ function storeToken(token){
 function updateToken(username, password) {
 
 	let response = getToken(username, password)
-
 	console.log("update token response: ", response)
 	return response
 }

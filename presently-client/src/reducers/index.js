@@ -7,9 +7,10 @@ import ModalStatus from './modal';
 import AccountActions from './accountactions';
 
 import TextInputs from './inputfield';
-
 import UserInfo from './userinformation'
 import CartStatus from './shoppingcart';
+import PreferenceStatus from './userpreferences';
+
 
 export default combineReducers({
 	Auth: Auth,
@@ -19,5 +20,6 @@ export default combineReducers({
 	AccountActions: AccountActions,
 	TextInputs: TextInputs,
 	UserInfo: UserInfo,
-	CartStatus: CartStatus
+	CartStatus: CartStatus,
+	PreferenceStatus: PreferenceStatus
 });

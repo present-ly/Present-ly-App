@@ -125,7 +125,6 @@ const mapStateToProps = (state) => ({
 	curState: state
 })
 
-/* TODO(rany): Add Actions here */
 
 export default connect(mapStateToProps, {
 	birthdayChange, genderChange, nameChange, submitUserInfoForm, fetchToken, updateToken
