@@ -58,16 +58,19 @@ export default class extends Component {
 				{name: 'Sports'},
 				{name: 'Food'},
 				{name: 'Cooking'},
-				{name: 'Waiting for more cards'}
-			]
+				{name: 'Waiting for more cards'},
+			],
+			action: null
 		}
 	}
 
 	handleYup(card) {
 		console.log('Yup')
-		this.props.yupAction(card.name,
-												 card.description,
-												 this.props.user)
+		console.log("Yup Card: ", card)
+		this.state.action(card.name,
+											card.description,
+											this.props.user)
+		return false;
 	}
 
 	handleNope(card){
@@ -80,6 +83,7 @@ export default class extends Component {
 
 	render() {
 		const { cards, yupAction, user} = this.props;
+
 		console.log("cards: ", cards)
 		console.log("typeof cards: ", typeof cards)
 		return(

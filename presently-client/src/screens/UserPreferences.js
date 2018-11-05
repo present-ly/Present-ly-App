@@ -3,15 +3,15 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 import {
-				UserSwipeCards, Button,
-				PopUpModal
-				} from '../components';
+	UserSwipeCards, Button,
+	PopUpModal
+	} from '../components';
 
 import { 
-				 openModal, closeModal,
-				 changePref, getAvailPref,
-				 postPref
-				} from '../actions'
+	openModal, closeModal,
+	changePref, getAvailPref,
+	postPref, availPref
+	} from '../actions'
 
 
 const ContainerView = styled.View`
@@ -21,7 +21,8 @@ const ContainerView = styled.View`
 `;
 
 const SubContainerView = styled.View`
-	flex: 1
+	justifyContent: center;
+	alignItems: center;
 `
 
 const ButtonContainer = styled.View`
@@ -42,24 +43,14 @@ const ModalText = styled.Text`
 	color: ${props => props.theme.WHITE};
 `;
 
-const ModalInfo = (
-				<SubContainerView>
-					<ModalText>
-					'Add your friends/family!'
-					</ModalText>
-					<ButtonContainer>
-						<Button text={"Add More"}/>
-					</ButtonContainer>
-					<ButtonContainer>
-						<Button text={"Do later"}/>
-					</ButtonContainer>
-				</SubContainerView>
-);
 
 class PreferenceScreen extends Component {
 
 	constructor(props){
 		super(props);
+
+		this.showModal = this.showModal.bind(this)
+		this._doLater = this._doLater.bind(this)
 
 		this.state = {
 			data: null
@@ -68,20 +59,41 @@ class PreferenceScreen extends Component {
 	}
 
 	componentWillMount(){
-		this.props.getAvailPref()
+
+		this.props.availPref()
 	}
 
-	componentDidMount(){
-		/*console.log("preferences: ", this.props.curState.PreferenceStatus.preferences)*/
+	_doLater(){
+		this.props.closeModal()
+		this.props.navigation.navigate('Main')
 	}
 
-	
+	showModal(){
+			return(
+				<SubContainerView>
+					<ModalText>
+					Add your friends/family!
+					</ModalText>
+					<ButtonContainer>
+						<Button
+							text={"Add More"}
+						/>
+					</ButtonContainer>
+					<ButtonContainer>
+						<Button 
+							text={"Do later"}
+							onPress={()=>(
+							this._doLater	()
+							)}
+						/>
+					</ButtonContainer>
+				</SubContainerView>
+			)
+	}
 
 	render() {
 
 		const pref = this.props.curState.PreferenceStatus.preferences
-
-		const user = this.props.curState.AccountActions.email
 
 		console.log("pref_screen: ", pref)
 
@@ -90,11 +102,14 @@ class PreferenceScreen extends Component {
 				<InstructionsText>
 					Swipe left for Dislike, right for like!
 				</InstructionsText>
-				<UserSwipeCards
+
+			{ pref ? <UserSwipeCards
 					cards={ pref }
-					user={ user }
-					yupAction={ this.props.postPref }
-				/>
+					yupAction={ this.props.changePref }
+				/> : <ModalText>Wait</ModalText> 
+			}
+
+
 				<ButtonContainer>
 					<Button
 					onPress={() =>{
@@ -104,7 +119,7 @@ class PreferenceScreen extends Component {
 							text={"Done"}/>
 				</ButtonContainer>
 			<PopUpModal
-			viewComp={ ModalInfo }
+			viewComp={ this.showModal() }
 			isModalVisible={
 				this.props.curState.ModalStatus.visiblePref
 			}/>
@@ -119,5 +134,7 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, {
-	openModal, closeModal, getAvailPref, postPref
+	openModal, closeModal, getAvailPref, postPref,
+	changePref, availPref
 })(PreferenceScreen)
+

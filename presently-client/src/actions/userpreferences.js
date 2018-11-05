@@ -9,25 +9,36 @@ import { availPrefURL,
 import store from '../store'
 
 
-function changePref(name, description, user){
-	result = postPref(name, description, user)
+function changePref(card){
+
+	return () => {
+
+		user = store.getState().AccountActions.uid
+		name = card.name
+		description = card.description
+		pref = postPref(name, description, user)
+		// store.dispatch(updatePref)
+
+		return false
+
+	}
+}
+
+function updatePref() {
+	console.log("updating preferences")
 	return {
-		type: UPDATE_PREF,
-		payload: {pref}
+		type: UPDATE_PREF
 	}
 }
 
 function getAvailPref(){
-	let results = availPref()
 	return {
 		type: GET_AVAIL_PREF,
-		payload: {
-			request: availPref
-		}
 	}
 }
 
 function storePref(pref){
+	console.log("storing prefs!")
 	return {
 		type: STORE_PREF,
 		payload: {
@@ -70,7 +81,6 @@ function postPref(name, description, user){
 			console.log("typeof finalRes: ", typeof finalRes)
 
 			return finalRes
-			// store.dispatch(storePref(finalRes))
 		})
 
 	return pref
@@ -79,6 +89,9 @@ function postPref(name, description, user){
 
 
 function availPref(){
+	return res = () =>{
+
+		store.dispatch(getAvailPref)
 
 	var state = store.getState()
 	token = `Token ${state.AccountActions.token}`
@@ -105,7 +118,9 @@ function availPref(){
 		})
 
 	console.log("pref: ", pref)
+		return pref
+	}
 }
 
  
-export { changePref, getAvailPref, postPref}
+export { changePref, getAvailPref, postPref, availPref}

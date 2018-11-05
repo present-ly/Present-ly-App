@@ -9,16 +9,19 @@ const INITIAL_STATE = {
 const PreferenceStatus = (state=INITIAL_STATE, action) => {
 	switch (action.type) {
 		case UPDATE_PREF:
-			return state
+			return false
 
 		case GET_AVAIL_PREF:
-			// state.preferences = action.type.[payload
-			state.preferences = 'wait'
-			const request = action.payload.request
+			state.preferences = false
+			return state
 
 		case STORE_PREF:
-			state.preferences = action.payload.pref
-			// return state
+			// state.preferences = action.payload.pref
+			newState = {
+				preferences: action.payload.pref
+				}
+			console.log("newState: ", newState)
+			return newState
 
 		default:
 			return state
