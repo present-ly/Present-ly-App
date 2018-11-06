@@ -10,7 +10,8 @@ import {
 import { 
 	openModal, closeModal,
 	changePref, getAvailPref,
-	postPref, availPref
+	postPref, availPref,
+	setRelationPage
 	} from '../actions'
 
 
@@ -51,11 +52,11 @@ class PreferenceScreen extends Component {
 
 		this.showModal = this.showModal.bind(this)
 		this._doLater = this._doLater.bind(this)
+		this._addRelationship = this._addRelationship.bind(this)
 
 		this.state = {
 			data: null
 		}
-
 	}
 
 	componentWillMount(){
@@ -68,6 +69,12 @@ class PreferenceScreen extends Component {
 		this.props.navigation.navigate('Main')
 	}
 
+	_addRelationship(){
+		this.props.setRelationPage()
+		this.props.closeModal()
+		this.props.navigation.navigate('UInfo')
+	}
+
 	showModal(){
 			return(
 				<SubContainerView>
@@ -77,13 +84,14 @@ class PreferenceScreen extends Component {
 					<ButtonContainer>
 						<Button
 							text={"Add More"}
+							onPress={()=>(this._addRelationship())}
 						/>
 					</ButtonContainer>
 					<ButtonContainer>
 						<Button 
 							text={"Do later"}
 							onPress={()=>(
-							this._doLater	()
+							this._doLater()
 							)}
 						/>
 					</ButtonContainer>
@@ -135,6 +143,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
 	openModal, closeModal, getAvailPref, postPref,
-	changePref, availPref
+	changePref, availPref, setRelationPage
 })(PreferenceScreen)
-

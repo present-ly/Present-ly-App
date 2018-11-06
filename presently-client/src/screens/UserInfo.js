@@ -10,22 +10,21 @@ import { birthdayChange, genderChange, nameChange, fetchToken,
 const ContainerView = styled.View`
 	justifyContent: center;
 	alignItems: center;
+  flex: 1;
 `;
 
 const ButtonContainer = styled.View`
-	top: 100;
+  margin: 3%
 	padding: 3%;
 `;
 
 const InputFieldContainer = styled.View`
-	top: 50;	
 	width: 100%;
 	padding: 2%
 `;
 
 const SliderContainer = styled.View`
 	width: 100%;
-	top: 50;
 	padding: 5%;
 `;
 
@@ -56,23 +55,17 @@ const FemaleText = styled.Text`
 `;
 
 const LogoView = styled.Image`
-	padding: 5%;
 	width: 150%;
 	height: 200;
 	transform: scale(0.5, 0.5);
 `;
 
 
-class RegisterScreen extends Component {
+class UserInfoScreen extends Component {
 
 	constructor(props) {
 		super(props);
 		this.submitPreference = this.submitPreference.bind(this)
-	}
-
-	componentDidMount(){
-		console.log("________we are mounting!!!: ")
-	}
 
 	submitPreference(){
 		accntStatus = this.props.curState.AccountActions
@@ -80,6 +73,7 @@ class RegisterScreen extends Component {
 		birthday = this.props.curState.UserInfo.birthday
 		gender = this.props.curState.UserInfo.gender
 		name = this.props.curState.UserInfo.name
+    relationship = this.props.curState.
 
 		results = this.props.submitUserInfoForm(accntStatus, birthday, gender, name)
 
@@ -87,8 +81,15 @@ class RegisterScreen extends Component {
 		this.props.navigation.navigate('UPref')
 	}
 
+  _addAnother(){
+    console.log("yes!")
+  }
+
 	render()	{
-		return (
+
+    relationPage = this.props.curState.RelationshipStatus.relationShow
+
+		return(
 			<ContainerView>
 				<LogoView source={require('../../assets/images/presently-logo.png')}/>
 				<TitleText>
@@ -111,11 +112,18 @@ class RegisterScreen extends Component {
 			<ButtonContainer>
 			</ButtonContainer>
 				<InputFieldContainer>
-					<InputField action={(text)=>{this.props.nameChange(text)}}text="Name"/>
+					<InputField action={(text)=>{this.props.nameChange(text)}} text="Name"/>
 				</InputFieldContainer>
+
+      { relationPage ? 
+        <InputFieldContainer>
+          <InputField action={(text)=>{this.props.nameChange(text)}} text="Relationship i.e. Friend, Dad ..."/>
+        </InputFieldContainer> : null}
+
 				<ButtonContainer>
-			<Button onPress={() => {this.submitPreference()}} text="Confirm"/>
+			<Button onPress={() => {this.submitPreference()}} text="Done"/>
 				</ButtonContainer>
+
 			</ContainerView>
 		);
 		}
@@ -128,4 +136,4 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
 	birthdayChange, genderChange, nameChange, submitUserInfoForm, fetchToken, updateToken
-})(RegisterScreen)
+})(UserInfoScreen)

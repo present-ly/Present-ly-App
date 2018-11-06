@@ -10,6 +10,7 @@ import TextInputs from './inputfield';
 import UserInfo from './userinformation'
 import CartStatus from './shoppingcart';
 import PreferenceStatus from './userpreferences';
+import RelationshipStatus from './relationships';
 
 
 export default combineReducers({
@@ -21,5 +22,6 @@ export default combineReducers({
 	TextInputs: TextInputs,
 	UserInfo: UserInfo,
 	CartStatus: CartStatus,
-	PreferenceStatus: PreferenceStatus
+	PreferenceStatus: PreferenceStatus,
+  RelationshipStatus: RelationshipStatus
 });

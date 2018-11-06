@@ -13,12 +13,13 @@ const INITIAL_STATE = {
 }
 
 const UserInformation = (state=INITIAL_STATE, action) => {
+
 	switch (action.type) {
 		case BIRTHDAY_CHANGE:
 			console.log("birthday")
 			state.birthday = action.payload.birthday
 			return state
-		
+
 		case GENDER_CHANGE:
 			state.gender = action.payload.gender
 			return state
@@ -42,5 +43,6 @@ const UserInformation = (state=INITIAL_STATE, action) => {
 			return state
 	}
 }
+
 
 export default UserInformation

@@ -6,3 +6,4 @@ export * from './inputfield';
 export * from './userinformation';
 export * from './shoppingcart';
 export * from './userpreferences';
+export * from './relationships';

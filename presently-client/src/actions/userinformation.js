@@ -56,6 +56,7 @@ function postForm(accountInfo, birthday, gender, name){
 	fullDate = `${year}-${month}-${day}`
 
 	// Reformatting birthday
+
 	splitBirthday = birthday.split('/')
 	fullBirthday = `${splitBirthday[2]}-${splitBirthday[0]}-${splitBirthday[1]}`
 

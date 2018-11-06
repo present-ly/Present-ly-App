@@ -29,3 +29,6 @@ export const AVAIL_PREF = 'avail_pref';
 export const UPDATE_UID = 'update_uid';
 export const GET_AVAIL_PREF = 'get_avail_pref';
 export const STORE_PREF = 'store_pref';
+export const RELATIONSHIP_CHANGE = 'relationship_change';
+export const RELATIONSHIP_DONE = 'relationship_done';
+export const RELATIONSHIP_PAGE = 'relationship_page';
